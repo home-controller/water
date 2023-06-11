@@ -26,3 +26,10 @@ Implement a separate system to monitor the tank level. This will allow you to ke
 
 ## Todo: Water Filtering
 Consider integrating a water filtering monitoring mechanism into the system to ensure water quality. This will help remove impurities and improve the overall water condition.
+
+- [x] Read pump pressure.
+- [x] Minimum turn on time.
+- [ ] LCD or some other display to show setting and state.
+- [] add some sort of menu to set the turn on off pressure.
+- [] Add temperature setup to the menu.
+- [] Add a report problems function: cell phone text or maybe LoRa network etc.
