@@ -1,0 +1,10 @@
+#backups
+*~
+# IDE files
+.theia
+*.orig
+undefined/
+.vscode/
+
+# pio build files
+.pio/
