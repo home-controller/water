@@ -30,6 +30,7 @@ Consider integrating a water filtering monitoring mechanism into the system to e
 - [x] Read pump pressure.
 - [x] Minimum turn on time.
 - [ ] LCD or some other display to show setting and state.
-- [] add some sort of menu to set the turn on off pressure.
-- [] Add temperature setup to the menu.
-- [] Add a report problems function: cell phone text or maybe LoRa network etc.
+- [ ] Add some optional buttons to set values
+- [ ] Add some sort of menu to set the turn on off pressure.
+- [ ] Add temperature setup to the menu.
+- [ ] Add a report problems function: cell phone text or maybe LoRa network etc.
