@@ -2,7 +2,7 @@
 
 .PHONY: edit
 edit:
-	code2.sh
+	code-insiders --extensions-dir="../vscode/insiders/extensions" water.code-workspace
 
  
 .PHONY: clean

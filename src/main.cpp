@@ -6,12 +6,14 @@
 unsigned long previousTime = 0;                // Variable to store the previous time
 const unsigned long interval = (60UL * 1000);  // 30 seconds in milliseconds
 
+#define pumpOnV HIGH
+
 // Analog read pin for pump presser in psi.
 #define PinPSI A1
 #define PinPump 2
 
 // Input 5V Output 0.5-4.5V / 0-5V(0-100PSI)
-byte minPSI = 15;
+byte minPSI = 20;
 byte maxPSI = 30;
 #define MCUVolt 5
 #define analogReadMaxRes 1024  // MAX RESOLUTION for nano, 10 bits or 0..1024
@@ -28,10 +30,14 @@ word mapVoltToPSI(word p) {
 }
 
 void pumpOff() {
+#if (pumpOnV == HIGH)
     digitalWrite(PinPump, LOW);
+#else
+    digitalWrite(PinPump, HIGH);
+#endif
 }
 void pumpOn() {
-    digitalWrite(PinPump, LOW);
+    digitalWrite(PinPump, HIGH);
 }
 
 void setup() {
