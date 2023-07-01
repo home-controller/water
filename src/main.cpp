@@ -170,7 +170,7 @@ void loop() {
             previousTime = currentTime;  // Update the previous time
             ledBlink(LCPumpOn);
             Serial.print(F("Pressure at turn on: "));
-            Serial.println(minPSI);
+            Serial.println(sensorPSI);
         } else {
             Serial.print(F("Not tuning on at pressure of: "));
             Serial.print(sensorPSI);
