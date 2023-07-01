@@ -19,14 +19,14 @@ static boolean PumpStateOn = true;
 
 // Input 5V Output 0.5-4.5V / 0-5V(0-100PSI)
 byte minPSI = 20;
-byte maxPSI = 30;
+byte maxPSI = 35;
 #define MCUVolt 5
 #define analogReadMaxRes 1024  // MAX RESOLUTION for nano, 10 bits or 0..1024
 #define resPerVolt 205         // 204.8
 #define minValue 102           // (1024/5) x 0.5 =102
 #define maxValue 922           // 205 x 4.5 = 922.5
 #define maxRange 820           // This could vary a bit.
-#define sensorMaxPSI 75
+#define sensorMaxPSI 80
 #define VoltToPIS 820 / sensorMaxPSI  // depends on sensor. For 75psi max VoltToPIS =
 
 word mapVoltToPSI(word p) {
