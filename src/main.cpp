@@ -34,9 +34,14 @@ static boolean PumpStateOn = true;
 #define pumpOnV LOW
 #define serial_speed 38400
 
-// Analog read pin for pump presser in psi.
-#define PinPSI A1
-#define PinPump 2
+#define PinPSI A1  // Analog read pin for pump presser in psi.
+#define PinPump1 3  // To relay to turn pump on/off with pressure sensor
+#define PinPump1 4  // To relay to turn pump on/off borehole pump to fill tank. Float controlled
+#define PinFloat1 5 // Connect to the low float
+#define PinFloat2 6 // Connect to the high float
+#define PinFlow1  7 // Connect to flow sensor switch, pump to first tank. This is for checking prime or any other problem with borehole pump.
+#define PinFlow2  8 // As above but for system pressure pump after settlement tanks.
+
 
 // Input 5V Output 0.5-4.5V / 0-5V(0-100PSI)
 byte minPSI = 20;
@@ -86,7 +91,7 @@ void pumpOff() {
 #if (pumpOnV == HIGH)
         digitalWrite(PinPump, LOW);
 #else
-        digitalWrite(PinPump, HIGH);
+        digitalWrite(PinPump1, HIGH);
 #endif
         PumpStateOn = false;
         Serial.println(F("Turned pump off"));
@@ -98,7 +103,7 @@ void pumpOn() {
 #if (pumpOnV == HIGH)
         digitalWrite(PinPump, HIGH);
 #else
-        digitalWrite(PinPump, LOW);
+        digitalWrite(PinPump1, LOW);
 #endif
         PumpStateOn = true;
         Serial.println(F("Turned pump on"));
@@ -109,7 +114,7 @@ void pumpOn() {
 #define LCUpToPressure 2
 #define LCErrorLostPrime 2
 #define LCErrorExpansionTank 3
-#define LCErrorSensor 4 // The sensor should have a voltage of 0.5 for 0 PSI. So if less the 0.5 volts there is a problem like disconnected sensor etc.
+#define LCErrorSensor 4  // The sensor should have a voltage of 0.5 for 0 PSI. So if less the 0.5 volts there is a problem like disconnected sensor etc.
 
 void ledBlink(byte state = 0) {
     static byte blinkCode = 0;
@@ -243,10 +248,13 @@ void setup() {
     display.println("PSI: ???");
     display.setTextSize(1);
     display.println("BAR: ?.???");
-    display.print("Min PSI: ");
-    display.println(minPSI);
-    display.print("Max PSI: ");
+    display.print("PSI Min:");
+    display.print(minPSI);
+    display.print(" Max:");
     display.println(maxPSI);
+    display.println("Tank: bellow low");
+    display.println("Flow tank: No,  sys: No.");
+
     // display.setTextSize(3);
     // display.setTextColor(SH110X_BLACK, SH110X_WHITE);  // 'inverted' text
     // display.println(3.141592);
@@ -279,9 +287,9 @@ void setup() {
     // delay(20000);
     previousTimeLed = millis() - intervalLed;
     previousTime = millis() - interval;
-    pinMode(PinPSI,INPUT);
+    pinMode(PinPSI, INPUT);
     pumpOff();
-    pinMode(PinPump, OUTPUT);
+    pinMode(PinPump1, OUTPUT);
     // Serial.println(F("Pump should be off here"));
     // delay(10000);
     Serial.println(F("leaving setup"));
@@ -301,17 +309,18 @@ void loop() {
         previousTime = currentTime;
         // oledWriteAt(sensorPSI, 6, 1, 3, 2);
         display.setTextSize(2);
-        display.setTextColor(SH110X_WHITE,SH110X_BLACK);
+        display.setTextColor(SH110X_WHITE, SH110X_BLACK);
         display.setCursor(0, 0);
-        display.println("Sensor? error ");
+        display.println("PSI Error ");
+        display.setTextSize(1);
+        display.println("Sensor1 disconnected?");
         display.display();
-        Serial.print(F("sensorValue is less than 1/4 of it's minimum value: "));Serial.println(sensorValue);
+        Serial.print(F("sensorValue is less than 1/4 of it's minimum value: "));
+        Serial.println(sensorValue);
         Serial.println(F("Likely disconnected sensor or bad connection"));
-        // 
+        //
         ledBlink(LCErrorSensor);
-        return;
-    }
-    if (sensorPSI > maxPSI) {
+    } else if (sensorPSI > maxPSI) {
         if (PumpStateOn == true) {
             Serial.print(F("Pump pressure at turn off: "));
             Serial.print(sensorPSI);
@@ -322,8 +331,7 @@ void loop() {
         }
         pumpOff();
         ledBlink(LCUpToPressure);
-    }
-    if ((sensorPSI < minPSI) and (PumpStateOn != true)) {
+    } else if ((sensorPSI < minPSI) and (PumpStateOn != true)) {
         if (currentTime - previousTime >= interval) {
             // 60 seconds have passed, execute your code here
 
@@ -350,15 +358,11 @@ void loop() {
             Serial.print(sensorPSI);
             Serial.print(F(", Loop count "));
             Serial.println(loopCount);
-            // if (22 != sensorPSI) {
-            //sensorPSI = 18;
+            // sensorPSI = 18;
             oledWriteAt(sensorPSI, 6, 1, 3, 2);
             float bar;
             bar = PSItoBar(sensorPSI);
             oledWriteAt(bar, 6, 3, 4, 1);
-            // intToStt
-            // if(r<10)()
-            // //}
             c = 0;
             loopCount = 0;
         }
