@@ -1,12 +1,12 @@
 /**
  * @file main.cpp
  * @author your name (you@domain.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2023-12-03
- * 
+ *
  * @copyright Copyright (c) 2023
- * 
+ *
  */
 
 #include "Arduino.h"
@@ -56,22 +56,29 @@ word mapVoltToPSI(word p) {
     return map(p, minValue, maxValue, 0, sensorMaxPSI);
 }
 
-#define PSI_TO_BAR_CONST_shiftL24 17351225    //0.0689475729*2^24=17 351 224.85
+#define PSI_TO_BAR_CONST_shiftL24 17351225  // 0.0689475729*2^24=17 351 224.85
+#define PSI_TO_BAR_CONST 0.0689475729
 
 /**
  * @brief Takes the pressure in PSI and returns it in bar with the 4 digits after the decimal point in r.
- * 
+ *
  * @param p The pressure in PSI
  * @param r the remainder x 10000. i.e. 4 places after the point, 0.xxxx
  * @return word the whole number part of the bars
  */
-word PSItoBar(word p, word &r){
+word PSItoBar(word p, word &r) {
     uint32_t bar;
     bar = PSI_TO_BAR_CONST_shiftL24 * (uint32_t)p;
     bar = bar >> 16;
     r = bar bitand 0xFF;
-    r = ((uint32_t)r *10000) >> 8;
+    r = ((uint32_t)r * 10000) >> 8;
     return (bar >> 8);
+}
+
+float PSItoBar(word p) {
+    float bar;
+    bar = (float)p * (float)PSI_TO_BAR_CONST;
+    return bar;
 }
 
 void pumpOff() {
@@ -102,6 +109,7 @@ void pumpOn() {
 #define LCUpToPressure 2
 #define LCErrorLostPrime 2
 #define LCErrorExpansionTank 3
+#define LCErrorSensor 4 // The sensor should have a voltage of 0.5 for 0 PSI. So if less the 0.5 volts there is a problem like disconnected sensor etc.
 
 void ledBlink(byte state = 0) {
     static byte blinkCode = 0;
@@ -139,10 +147,26 @@ void ledBlink(byte state = 0) {
             delay(1000);
         }
         delay(2000);
+    } else if (state == LCErrorSensor) {
+        for (i = 0; i < 4; i++) {
+            digitalWrite(LED_BUILTIN, HIGH);
+            delay(250);
+            digitalWrite(LED_BUILTIN, LOW);
+            delay(250);
+            digitalWrite(LED_BUILTIN, HIGH);
+            delay(250);
+            digitalWrite(LED_BUILTIN, LOW);
+            delay(250);
+            digitalWrite(LED_BUILTIN, HIGH);
+            delay(3000);
+            digitalWrite(LED_BUILTIN, LOW);
+            delay(1000);
+        }
+        delay(2000);
     }
 }
 
-byte oledWriteAt(byte n, byte x_char, byte y_line, byte padTo = 0, byte textSize = 1, byte charWidth = 6, byte charHight = 9) {
+byte oledWriteAt(byte n, byte x_char, byte y_line, byte padTo = 0, byte textSize = 1, byte charWidth = 6, byte charHight = 8) {
     if (x_char < 1 or y_line < 1) return -1;
     if (padTo > 0) {
         display.fillRect((x_char - 1) * textSize * charWidth, (y_line - 1) * textSize * charHight, padTo * textSize * charWidth, 1 * textSize * charHight, SH110X_WHITE);
@@ -153,6 +177,43 @@ byte oledWriteAt(byte n, byte x_char, byte y_line, byte padTo = 0, byte textSize
     if ((padTo > 0))
         display.setCursor((x_char - 1) * charWidth * textSize, (y_line - 1) * charHight);
     display.println(n);
+    display.display();
+    return 0;
+}
+
+byte oledWriteAt(float n, byte x_char, byte y_line, byte padTo = 3, byte textSize = 1, byte charWidth = 6, byte charHight = 8) {
+    if (x_char < 1 or y_line < 1) return -1;
+    byte charL;
+    charL = 1;
+    if (n > 10) {
+        charL++;
+        if (n > 100) {
+            charL++;
+            if (n > 1000) {
+                charL++;
+                if (n > 10000) {
+                    charL++;
+                }
+            }
+        }
+    }
+
+    if (padTo > 0) {
+        display.fillRect((x_char - 1) * textSize * charWidth, (y_line - 1) * textSize * charHight, (padTo + 1) * textSize * charWidth, 1 * textSize * charHight, SH110X_WHITE);
+    }
+
+    display.setTextSize(textSize);
+    display.setTextColor(SH110X_WHITE, SH110X_BLACK);
+    if ((padTo > 0)) {
+        display.setCursor((x_char - 1) * charWidth * textSize, (y_line - 1) * charHight);
+        if (charL > padTo) {
+            display.print(">");
+        } else if (charL == padTo) {
+            display.print(n, 0);
+        } else {
+            display.print(n, padTo - (charL));
+        }
+    }
     display.display();
     return 0;
 }
@@ -179,9 +240,13 @@ void setup() {
     display.setTextSize(2);
     display.setTextColor(SH110X_WHITE);
     display.setCursor(0, 0);
-    display.println("PSI: 123");
+    display.println("PSI: ???");
     display.setTextSize(1);
-    display.println("BAR: 1.2");
+    display.println("BAR: ?.???");
+    display.print("Min PSI: ");
+    display.println(minPSI);
+    display.print("Max PSI: ");
+    display.println(maxPSI);
     // display.setTextSize(3);
     // display.setTextColor(SH110X_BLACK, SH110X_WHITE);  // 'inverted' text
     // display.println(3.141592);
@@ -214,6 +279,7 @@ void setup() {
     // delay(20000);
     previousTimeLed = millis() - intervalLed;
     previousTime = millis() - interval;
+    pinMode(PinPSI,INPUT);
     pumpOff();
     pinMode(PinPump, OUTPUT);
     // Serial.println(F("Pump should be off here"));
@@ -221,13 +287,30 @@ void setup() {
     Serial.println(F("leaving setup"));
 }
 byte c = 0;
-byte loopCount = 0;
+word loopCount = 0;
 byte lastPSI = 123;
 void loop() {
     loopCount++;
     unsigned long currentTime = millis();  // Get the current time
     word sensorValue = analogRead(PinPSI);
     byte sensorPSI = mapVoltToPSI(sensorValue);
+    /// the minimum value for a working a connected sensor should be 0.5V so if it is less than 1/4 of that we should have a problem.
+    /// The pin than the sensor is on should be pulled low to detect such problems as a disconnected sensor os bad conenction.
+    if (sensorValue < ((minValue) / 4)) {
+        pumpOff();
+        previousTime = currentTime;
+        // oledWriteAt(sensorPSI, 6, 1, 3, 2);
+        display.setTextSize(2);
+        display.setTextColor(SH110X_WHITE,SH110X_BLACK);
+        display.setCursor(0, 0);
+        display.println("Sensor? error ");
+        display.display();
+        Serial.print(F("sensorValue is less than 1/4 of it's minimum value: "));Serial.println(sensorValue);
+        Serial.println(F("Likely disconnected sensor or bad connection"));
+        // 
+        ledBlink(LCErrorSensor);
+        return;
+    }
     if (sensorPSI > maxPSI) {
         if (PumpStateOn == true) {
             Serial.print(F("Pump pressure at urn off: "));
@@ -268,9 +351,14 @@ void loop() {
             Serial.print(F(", Loop count "));
             Serial.println(loopCount);
             // if (22 != sensorPSI) {
+            //sensorPSI = 18;
             oledWriteAt(sensorPSI, 6, 1, 3, 2);
-            PSItoBar()
-            //}
+            float bar;
+            bar = PSItoBar(sensorPSI);
+            oledWriteAt(bar, 6, 3, 4, 1);
+            // intToStt
+            // if(r<10)()
+            // //}
             c = 0;
             loopCount = 0;
         }
