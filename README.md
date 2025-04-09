@@ -23,6 +23,16 @@ Consider using 1-Wire temperature sensors, amp sensors, and/or water flow sensor
 
 ## Todo: Tank Level Monitoring
 Implement a separate system to monitor the tank level. This will allow you to keep track of the water level and take appropriate action as needed.
+Tank level lines D9 & D10 are pulled to ground vi. 47k
+
+## Pins:
+* D8, Sensor Chack. Conected to A0(the psi sensor PIN) throught a 47k resistor, untested pull pull low to check if sensor output stays valid or goes to 0V if bad connection etc.
+* D9, Float top > GRD 47k 
+* D10, Float Lower  > GRD 47k
+* A0(Sensor pin), D7:  > GRD 1M
+
+* Prime lost LED D4
+
 
 ## Todo: Water Filtering
 Consider integrating a water filtering monitoring mechanism into the system to ensure water quality. This will help remove impurities and improve the overall water condition.
