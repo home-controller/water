@@ -1,0 +1,13 @@
+BasedOnStyle: Mozilla
+PenaltyReturnTypeOnItsOwnLine: 1000000
+AlwaysBreakAfterReturnType: None
+AlwaysBreakAfterDefinitionReturnType: None
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+EmptyLineBeforeAccessModifier: LogicalBlock
+IncludeBlocks: Merge
+ReflowComments: true
+ColumnLimit: 155
+AllowShortBlocksOnASingleLine: Always
+AllowShortFunctionsOnASingleLine: All
+TabWidth: 4
+IndentWidth: 4
