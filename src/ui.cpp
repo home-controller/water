@@ -29,11 +29,6 @@ void ledBlink(byte state)
 {
     static byte blinkCode = 0;
     byte i;
-    static byte ledLaststate = LOW;
-    digitalWrite(PinPump1, ledLaststate);
-    ledLaststate = !ledLaststate;
-    digitalWrite(PinPump2, ledLaststate);
-    digitalWrite(lostPrimeLed, ledLaststate);
     if ((state > 0) and (state != blinkCode)) {
         blinkCode = state;
     } else {
@@ -58,7 +53,7 @@ void ledBlink(byte state)
             delay(500);
         }
         delay(2000);
-    } else if (state == LCErrorSensor) {// 4 x 5 + 2 = 22 seconds
+    } else if (state == LCErrorSensor) { // 4 x 5 + 2 = 22 seconds
         for (i = 0; i < 4; i++) {
             digitalWrite(LED_BUILTIN, HIGH);
             delay(250);
@@ -77,6 +72,26 @@ void ledBlink(byte state)
     }
 }
 
+
+/**
+ * @brief Writes a number to the OLED display at a specified position with optional padding and text size.
+ * 
+ * @param n The number to be displayed.
+ * @param x_char The horizontal character position (1-based index).
+ * @param y_line The vertical line position (1-based index).
+ * @param padTo The number of characters to pad the display area to (0 for no padding).
+ * @param textSize The size of the text to be displayed.
+ * @param charWidth The width of a single character in pixels.
+ * @param charHight The height of a single character in pixels.
+ * @return byte Returns 0 on success, or -1 if the specified position is invalid.
+ * 
+ * @details
+ * - The function first validates the position parameters (`x_char` and `y_line`).
+ * - If `padTo` is greater than 0, it fills a rectangular area on the display to pad the text.
+ * - The text size and color are set before displaying the number.
+ * - The cursor is positioned based on the specified character position and text size.
+ * - The number is printed to the display, and the display is updated.
+ */
 byte oledWriteAt(byte n, byte x_char, byte y_line, byte padTo, byte textSize, byte charWidth, byte charHight)
 {
     if (x_char < 1 or y_line < 1) return -1;
@@ -93,6 +108,25 @@ byte oledWriteAt(byte n, byte x_char, byte y_line, byte padTo, byte textSize, by
     return 0;
 }
 
+/**
+ * @brief Writes a floating-point number to an OLED display at a specified position with optional padding.
+ * 
+ * @param n The floating-point number to display.
+ * @param x_char The horizontal character position (1-based index).
+ * @param y_line The vertical line position (1-based index).
+ * @param padTo The minimum number of characters to pad the number to. If 0, no padding is applied.
+ * @param textSize The size of the text to display.
+ * @param charWidth The width of a single character in pixels.
+ * @param charHight The height of a single character in pixels.
+ * @return byte Returns 0 on success, or -1 if the specified position is invalid (x_char or y_line < 1).
+ * 
+ * @details
+ * - The function calculates the number of characters required to display the number `n`.
+ * - If `padTo` is greater than 0, a filled rectangle is drawn as a background for the text.
+ * - The text is displayed with the specified text size and color.
+ * - If the number of characters required exceeds `padTo`, a ">" character is displayed instead.
+ * - The function updates the display after writing the text.
+ */
 byte oledWriteAt(float n, byte x_char, byte y_line, byte padTo, byte textSize, byte charWidth, byte charHight)
 {
     if (x_char < 1 or y_line < 1) return -1;
@@ -151,9 +185,9 @@ void setupOLed()
     display.print(" Max:");
     display.println(maxPSI);
     display.println("Tank: bellow low");
-    display.println("Flow tank:0 filter:000");
-    display.println("Flow, tank:0 filter:0");
-    display.println("Flow, tank:0 filter:0");
+    display.println("Well:flow:000, Pump=0");
+    display.println("Sys:Flow:000,Pump=0");
+    display.println("Pump: well on, System off");
     // display.setTextSize(3);
     // display.setTextColor(SH110X_BLACK, SH110X_WHITE);  // 'inverted' text
     // display.println(3.141592);
@@ -167,9 +201,9 @@ void setupOLed()
 void OLedPSIError()
 {
 
-    display.clearDisplay();
+    //display.clearDisplay();
     display.setTextSize(2);
-    display.setTextColor(SH110X_WHITE);
+    display.setTextColor(SH110X_WHITE,SH110X_BLACK);
     display.setCursor(0, 0);
     display.println(F("PSI Error"));
     display.setTextSize(1);

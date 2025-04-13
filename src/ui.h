@@ -24,5 +24,6 @@ byte oledWriteAt(byte n, byte x_char, byte y_line, byte padTo = 0, byte textSize
 byte oledWriteAt(float n, byte x_char, byte y_line, byte padTo = 3, byte textSize = 1, byte charWidth = 6, byte charHight = 8);
 
 void setupOLed();
+void OLedPSIError();
 
 #endif // UI_H

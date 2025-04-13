@@ -13,10 +13,6 @@
 #include "ui.h"
 #include <Arduino.h>
 
-// Input 5V Output 0.5-4.5V / 0-5V(0-100PSI)
-byte minPSI = 20;
-byte maxPSI = 35;
-const unsigned long interval = (60UL * 1000); // 30 seconds in milliseconds
 const unsigned long intervalLed = (2UL * 1000);
 
 // Set LED_BUILTIN if it is not defined by Arduino framework
@@ -65,9 +61,10 @@ void setup()
     previousTimeLed = millis() - intervalLed;
     previousTime = millis() - interval;
     pinMode(PinPSI, INPUT);
-    pumpOff();
     pinMode(PinPump1, OUTPUT);
     pinMode(PinPump2, OUTPUT);
+    wellPumpOff();
+    systemPumpOff();
     pinMode(lostPrimeLed, OUTPUT);
     // Serial.println(F("Pump should be off here"));
     // delay(10000);
@@ -78,6 +75,18 @@ word loopCount = 0;
 byte lastPSI = 123;
 void loop()
 {
+    // TEST: testing PCB board relays
+    static byte ledLaststate = LOW;
+    if (ledLaststate == HIGH) {
+        wellPumpOn();
+        systemPumpOff();
+    } else {
+        wellPumpOff();
+        systemPumpOn();
+    }
+    ledLaststate = !ledLaststate;
+    digitalWrite(lostPrimeLed, ledLaststate);
+
     loopCount++;
     unsigned long currentTime = millis(); // Get the current time
     word sensorValue = analogRead(PinPSI);
@@ -87,12 +96,11 @@ void loop()
     /// is on should be pulled low to detect such problems as a disconnected
     /// sensor os bad conenction.
     if (sensorValue < ((minValue) / 4)) {
-        pumpOff();
+        systemPumpOff();
         // Serial.printf(F("Debug: At line: " CURRENT_LINE " pumpOff();"));
         previousTime = currentTime;
         // oledWriteAt(sensorPSI, 6, 1, 3, 2);
 
-        
         Serial.print(F("sensorValue is less than 1/4 of it's minimum value: "));
         Serial.println(sensorValue);
         Serial.println(F("Likely disconnected sensor or bad connection"));
@@ -101,6 +109,7 @@ void loop()
         Serial.print(F(", Pin D4: "));
         Serial.print(digitalRead(4));
         //
+        OLedPSIError();
         ledBlink(LCErrorSensor);
     } else if (sensorPSI > maxPSI) {
         if (PumpStateOn == true) {
@@ -111,14 +120,14 @@ void loop()
             Serial.print(F(", sensorValue is: "));
             Serial.println(sensorValue);
         }
-        pumpOff();
+        systemPumpOff();
         // Serial.printf(F("Debug: At line: " CURRENT_LINE " pumpOff();"));
         ledBlink(LCUpToPressure);
     } else if ((sensorPSI < minPSI) and (PumpStateOn != true)) {
         if (currentTime - previousTime >= interval) {
             // 60 seconds have passed, execute your code here
 
-            pumpOn();
+            systemPumpOn();
             // Serial.printf(F("Debug: At line: " CURRENT_LINE " pumpOn();"));
             previousTime = currentTime; // Update the previous time
             ledBlink(LCPumpOn);

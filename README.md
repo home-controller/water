@@ -23,7 +23,22 @@ Consider using 1-Wire temperature sensors, amp sensors, and/or water flow sensor
 
 ## Todo: Tank Level Monitoring
 Implement a separate system to monitor the tank level. This will allow you to keep track of the water level and take appropriate action as needed.
-Tank level lines D9 & D10 are pulled to ground vi. 47k
+* Tank level lines D9 & D10 go through a 22Ω and are also pulled to ground vi. 47k
+* With two floats with break for full & make for not floating, one for the low water level and 1 for the high.
+  * Then if the 1 side of the float is connected to 5V and the other to the Pin the pin will go High when the float is not floating.
+  * This way it is a positive action to pull the pin High when there is not water, so with a connection problem to pump will not flood the well house.
+* Or another way of saying it is if both pins are HIGH(+5V) the tank needs more water.
+* And if the High float is off(i.e. NC, float is floating) turn the pum off as the tank is full
+  * note the bottom float will also be floating = switch is off now, so pulled low on PCB.
+  * If not should maybe halt until someone fixes the float to stop the pump turning on and off fast? Or maybe change mode to working with just the high float
+
+1. Connect one side of the float switch to +5
+2. Connect the other side to the float pin
+3. In code check for both pins high to turn on pump
+   1. Check for water flow and turn off pump until fixed if it's lost its prime etc.
+4. Turn off pump when top float pins is low again.
+5. TODO: maybe do something about just having 1 float or if 1 stops working.
+
 
 ## Pins:
 ### Some pins goe too SRV05-4-P-T7 , ESD and Surge Protection (TVS/ESD) chips
