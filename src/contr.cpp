@@ -6,7 +6,6 @@
 byte maxPSI = 35;
 byte minPSI = 20;
 
-
 word mapVoltToPSI(word p)
 {
     if (p > maxValue) { p = maxValue; }
@@ -68,7 +67,7 @@ void wellPumpOff()
  *       introduces a delay of 500 milliseconds if the minimum interval condition
  *       is not met.
  *
- * 
+ *
  * @details
  * @global PumpStateOn A boolean flag indicating whether the pump is currently on.
  * @global pumpOnV A macro defining the logic level to activate the pump (HIGH or LOW).
@@ -116,6 +115,11 @@ void systemPumpOff()
 
 void systemPumpOn()
 {
+    static unsigned long lastTurnedOn = millis();
+    if (millis() - lastTurnedOn < minTOnTime) {
+        delay(500);
+        return;
+    }
     if (PumpStateOn != true) {
 #if (pumpOnV == HIGH)
         digitalWrite(PinPump1, HIGH);
