@@ -6,7 +6,7 @@ AllowShortIfStatementsOnASingleLine: AllIfsAndElse
 EmptyLineBeforeAccessModifier: LogicalBlock
 IncludeBlocks: Merge
 ReflowComments: true
-ColumnLimit: 155
+ColumnLimit: 0
 AllowShortBlocksOnASingleLine: Always
 AllowShortFunctionsOnASingleLine: All
 TabWidth: 4

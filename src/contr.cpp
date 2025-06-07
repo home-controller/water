@@ -88,8 +88,7 @@ void wellPumpOff()
 boolean wellPumpOn()
 {
     // static unsigned long lastTurnedOn = millis();
-    static unsigned long lastTurnedOn =
-      0; // Initialize to 0 is the same as millis() at startup. But saves if it has been initalized each time the function is called.
+    static unsigned long lastTurnedOn = 0; // Initialize to 0 is the same as millis() at startup. But saves if it has been initalized each time the function is called.
     if (millis() - lastTurnedOn < minTOnTime) {
         Serial.println(F("wellPumpOn: minTOnTime not elapsed"));
         delay(500);
@@ -99,7 +98,7 @@ boolean wellPumpOn()
 #if (pumpOnV == HIGH)
         digitalWrite(PinPump2, HIGH);
 #else
-        digitalWrite(PinPump1, LOW);
+        digitalWrite(PinPump2, LOW);
 #endif
         pumpStateOnWell = true;
         Serial.println(F("Turned well pump on"));
@@ -125,6 +124,7 @@ boolean systemPumpOn()
 {
     static unsigned long lastTurnedOn = 0; // Initialize to 0 is the same as millis() at startup. But saves checking if initalized each time the function is called.
     if (millis() - lastTurnedOn < minTOnTime) {
+        Serial.println(F("systemPumpOn: minTOnTime not elapsed"));
         delay(500);
         return false;
     }
@@ -204,7 +204,7 @@ boolean testTankFull()
     f1 = digitalRead(PinFloatTop);
     f2 = digitalRead(PinFloatLower);
     if ((f1 == WaterAtFloat) and (f2 == WaterNotAtFloat)) {
-        wellPumpOff(); // TODO Change the pump on and off functions to make sure they do not cycle the pump on and off too fast.
+        wellPumpOff();
         Serial.println(F("Float 1 is stuck or float 2 is not working"));
         // TODO: Update the UI to show that the float is stuck.
         return true; // We do not really know if the tank is full or not, as the float is not working. But safer to assume it is full.

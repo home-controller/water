@@ -22,6 +22,8 @@ byte oledWriteAt(float n, byte x_char, byte y_line, byte padTo = 3, byte textSiz
 
 void setupOLed();
 void OLedPSIError();
+void OLedPSINoError();
+
 void printPSIError(word sensorValue);
 
 #endif // UI_H

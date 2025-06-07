@@ -96,7 +96,7 @@ byte oledWriteAt(byte n, byte x_char, byte y_line, byte padTo, byte textSize, by
     if (x_char < 1 or y_line < 1) return -1;
     if (padTo > 0) {
         display.fillRect(
-          (x_char - 1) * textSize * charWidth, (y_line - 1) * textSize * charHight, padTo * textSize * charWidth, 1 * textSize * charHight, SH110X_WHITE);
+          (x_char - 1) * textSize * charWidth, (y_line - 1) * textSize * charHight, padTo * textSize * charWidth, 1 * textSize * charHight, SH110X_BLACK);
     }
 
     display.setTextSize(textSize);
@@ -183,10 +183,10 @@ void setupOLed()
     display.print(minPSI);
     display.print(" Max:");
     display.println(maxPSI);
-    display.println("Tank: bellow low");
-    display.println("Well:flow:000, Pump=0");
-    display.println("Sys:Flow:000,Pump=0");
-    display.println("Pump: well on, System off");
+    display.println(F("Tank: bellow low"));
+    display.println(F("Well:flow:000, Pump=0"));
+    display.println(F("Sys:Flow:000,Pump=0"));
+    display.println(F("Pump Tank 1, Sys 0"));
     // display.setTextSize(3);
     // display.setTextColor(SH110X_BLACK, SH110X_WHITE);  // 'inverted' text
     // display.println(3.141592);
@@ -206,7 +206,18 @@ void OLedPSIError()
     display.setCursor(0, 0);
     display.println(F("PSI Error"));
     display.setTextSize(1);
-    display.println(F("Sensor disconnected"));
+    display.print(F("Sensor disconnected"));
+    display.display();
+}
+
+void OLedPSINoError()
+{
+    display.setTextSize(2);
+    display.setTextColor(SH110X_WHITE, SH110X_BLACK);
+    display.setCursor(0, 0);
+    display.println(F("PSI: ??? "));
+    display.setTextSize(1);
+    display.print(F("BAR: ?.???         "));
     display.display();
 }
 

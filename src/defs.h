@@ -39,7 +39,7 @@ constexpr word maxValue = static_cast<word>(resPerVolt * 4.5); // 205 x 4.5 = 92
  * to the pump turning on and off repeatedly, potentially causing it
  * to burn out. The default value is set to 30 seconds (30,000 milliseconds).
  */
-constexpr unsigned long minTOnTime = (5UL * 1000);
+constexpr unsigned long minTOnTime = (15UL * 1000);
 //TODO: Change this to 30 seconds when done testing
 
 #define PinPSI A0        // Analog read pin for pump presser in psi.

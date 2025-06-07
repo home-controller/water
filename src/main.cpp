@@ -101,17 +101,31 @@ void loop()
     // END TEST
 
     loopCount++;
-    unsigned long currentTime = millis(); // Get the current time
-    word sensorValue = analogRead(PinPSI);
+    unsigned long currentTime = millis(); // Get the current time in milliseconds, 1 second = 1000 milliseconds
+    word sensorValue,tSV;
     byte sensorPSI = mapVoltToPSI(sensorValue);
+    tSV = analogRead(PinPSI);
+
+    // If the PSI Changes update the display
+    if (sensorPSI != lastPSI) {
+        lastPSI = sensorPSI;
+        oledWriteAt(sensorPSI, 6, 1, 4, 2);
+        float bar;
+        bar = PSItoBar(sensorPSI);
+        oledWriteAt(bar, 6, 3, 4, 1);
+    }
+
     /// the minimum value for a working a connected sensor should be 0.5V so if it
     /// is less than 1/4 of that we should have a problem. The pin than the sensor
     /// is on should be pulled low to detect such problems as a disconnected
     /// sensor os bad conenction.
     if (oneM1) {
-        if (sensorValue >= ((minValue) / 4)) { oneM1 = false; }
-        Serial.print(F("sensorValue is now >= to 1/4 of it's minimum value: "));
-        Serial.println(sensorValue);
+        if (sensorValue >= ((minValue) / 4)) {
+            oneM1 = false;
+            Serial.print(F("sensorValue is now >= to 1/4 of it's minimum value: "));
+            Serial.println(sensorValue);
+            OLedPSINoError();
+        }
     }
     if (sensorValue < ((minValue) / 4)) {
         systemPumpOff();
@@ -148,13 +162,19 @@ void loop()
 
             // 30 seconds have passed, execute your code here
             // Serial.printf(F("Debug: At line: " CURRENT_LINE " pumpOn();"));
-            ledBlink(LCPumpOn);
-            Serial.print(F("Turn on pressure: "));
-            Serial.println(minPSI);
+            static boolean lastSysPumpState = 0;
+            if (lastSysPumpState != pumpStateOnSys) {
+                lastSysPumpState = pumpStateOnSys;
+                Serial.print(F("System pump state changed to: "));
+                Serial.println(pumpStateOnSys);
+                ledBlink(LCPumpOn);
+                Serial.print(F("Turn on pressure: "));
+                Serial.println(minPSI);
+            }
             t1 = false;
         }
     }
-    if (currentTime - previousTimeLed >= intervalLed) {
+    if (currentTime - previousTimeLed >= intervalLed) {// 2000 milliseconds = 2 seconds
         previousTimeLed = currentTime;
         ledBlink();
         if (c >= 5) {
