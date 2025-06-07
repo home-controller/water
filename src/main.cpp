@@ -59,10 +59,19 @@ void setup()
 
     // delay(20000);
     previousTimeLed = millis() - intervalLed;
-    previousTime = millis() - interval;
     pinMode(PinPSI, INPUT);
     pinMode(PinPump1, OUTPUT);
     pinMode(PinPump2, OUTPUT);
+    // Serial.print(F("Wait for "));Serial.print(minTOnTime / 1000);
+    // Serial.println(F(" seconds"));
+    // delay(minTOnTime);// The pumps can't be turn on immediately after booting to prevent rapid cycling if the board is constantly power cycling.
+    // Serial.println(F("Turning pumps on for 15 seconds to test relays"));
+    // wellPumpOn();
+    // systemPumpOn();
+    // // digitalWrite(PinPump1, HIGH);
+    // digitalWrite(PinPump2, HIGH);
+    // delay(15000); // wait for pumps to turn on
+    Serial.println(F("turning pumps off "));
     wellPumpOff();
     systemPumpOff();
     pinMode(lostPrimeLed, OUTPUT);
@@ -75,17 +84,21 @@ word loopCount = 0;
 byte lastPSI = 123;
 void loop()
 {
+    static boolean oneM1 = false; // just print the error once until the error is cleared
+    static boolean t1 = false;
     // TEST: testing PCB board relays
-    static byte ledLaststate = LOW;
-    if (ledLaststate == HIGH) {
-        wellPumpOn();
-        systemPumpOff();
-    } else {
-        wellPumpOff();
-        systemPumpOn();
-    }
-    ledLaststate = !ledLaststate;
-    digitalWrite(lostPrimeLed, ledLaststate);
+    // static byte ledLaststate = LOW;
+    // if (ledLaststate == HIGH) {
+    //     wellPumpOn();
+    //     systemPumpOff();
+    // } else {
+    //     wellPumpOff();
+    //     systemPumpOn();
+    // }
+    // ledLaststate = !ledLaststate;
+    // digitalWrite(lostPrimeLed, ledLaststate);
+    // delay(1000); // wait for 1 second before toggling again
+    // END TEST
 
     loopCount++;
     unsigned long currentTime = millis(); // Get the current time
@@ -95,24 +108,21 @@ void loop()
     /// is less than 1/4 of that we should have a problem. The pin than the sensor
     /// is on should be pulled low to detect such problems as a disconnected
     /// sensor os bad conenction.
+    if (oneM1) {
+        if (sensorValue >= ((minValue) / 4)) { oneM1 = false; }
+        Serial.print(F("sensorValue is now >= to 1/4 of it's minimum value: "));
+        Serial.println(sensorValue);
+    }
     if (sensorValue < ((minValue) / 4)) {
         systemPumpOff();
-        // Serial.printf(F("Debug: At line: " CURRENT_LINE " pumpOff();"));
-        previousTime = currentTime;
-        // oledWriteAt(sensorPSI, 6, 1, 3, 2);
-
-        Serial.print(F("sensorValue is less than 1/4 of it's minimum value: "));
-        Serial.println(sensorValue);
-        Serial.println(F("Likely disconnected sensor or bad connection"));
-        Serial.print(F("Curent Pump Borehole state: "));
-        Serial.print(PumpStateOn);
-        Serial.print(F(", Pin D4: "));
-        Serial.print(digitalRead(4));
-        //
-        OLedPSIError();
-        ledBlink(LCErrorSensor);
+        if (!oneM1) {
+            oneM1 = true;
+            printPSIError(sensorValue);
+            OLedPSIError();
+            ledBlink(LCErrorSensor);
+        }
     } else if (sensorPSI > maxPSI) {
-        if (PumpStateOn == true) {
+        if (pumpStateOnSys == true) {
             Serial.print(F("Pump pressure at turn off: "));
             Serial.print(sensorPSI);
             Serial.print(F(", Turn off pressure is: "));
@@ -123,24 +133,25 @@ void loop()
         systemPumpOff();
         // Serial.printf(F("Debug: At line: " CURRENT_LINE " pumpOff();"));
         ledBlink(LCUpToPressure);
-    } else if ((sensorPSI < minPSI) and (PumpStateOn != true)) {
-        if (currentTime - previousTime >= interval) {
-            // 60 seconds have passed, execute your code here
-
-            systemPumpOn();
-            // Serial.printf(F("Debug: At line: " CURRENT_LINE " pumpOn();"));
-            previousTime = currentTime; // Update the previous time
-            ledBlink(LCPumpOn);
-            Serial.print(F("Pressure to turn on at: "));
-            Serial.println(minPSI);
-
+    } else if ((sensorPSI < minPSI) and (pumpStateOnSys != true)) {
+        if (!systemPumpOn()) {
+            if (!t1) {
+                t1 = true;
+                Serial.print(F("Not tuning on at pressure of: "));
+                Serial.print(sensorPSI);
+                Serial.print(F(" as not been "));
+                Serial.print(minTOnTime / 1000);
+                Serial.println(F(" seconds since last turn on,"));
+            }
+            delay(1000);
         } else {
-            Serial.print(F("Not tuning on at pressure of: "));
-            Serial.print(sensorPSI);
-            Serial.print(F(" as only been: "));
-            Serial.print((currentTime - previousTime) / 1000);
-            Serial.println(F(" seconds since last turn on,"));
-            delay(5000);
+
+            // 30 seconds have passed, execute your code here
+            // Serial.printf(F("Debug: At line: " CURRENT_LINE " pumpOn();"));
+            ledBlink(LCPumpOn);
+            Serial.print(F("Turn on pressure: "));
+            Serial.println(minPSI);
+            t1 = false;
         }
     }
     if (currentTime - previousTimeLed >= intervalLed) {

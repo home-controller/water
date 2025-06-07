@@ -8,3 +8,4 @@ undefined/
 
 # pio build files
 .pio/
+.cache/

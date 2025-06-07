@@ -72,10 +72,9 @@ void ledBlink(byte state)
     }
 }
 
-
 /**
  * @brief Writes a number to the OLED display at a specified position with optional padding and text size.
- * 
+ *
  * @param n The number to be displayed.
  * @param x_char The horizontal character position (1-based index).
  * @param y_line The vertical line position (1-based index).
@@ -84,7 +83,7 @@ void ledBlink(byte state)
  * @param charWidth The width of a single character in pixels.
  * @param charHight The height of a single character in pixels.
  * @return byte Returns 0 on success, or -1 if the specified position is invalid.
- * 
+ *
  * @details
  * - The function first validates the position parameters (`x_char` and `y_line`).
  * - If `padTo` is greater than 0, it fills a rectangular area on the display to pad the text.
@@ -110,7 +109,7 @@ byte oledWriteAt(byte n, byte x_char, byte y_line, byte padTo, byte textSize, by
 
 /**
  * @brief Writes a floating-point number to an OLED display at a specified position with optional padding.
- * 
+ *
  * @param n The floating-point number to display.
  * @param x_char The horizontal character position (1-based index).
  * @param y_line The vertical line position (1-based index).
@@ -119,7 +118,7 @@ byte oledWriteAt(byte n, byte x_char, byte y_line, byte padTo, byte textSize, by
  * @param charWidth The width of a single character in pixels.
  * @param charHight The height of a single character in pixels.
  * @return byte Returns 0 on success, or -1 if the specified position is invalid (x_char or y_line < 1).
- * 
+ *
  * @details
  * - The function calculates the number of characters required to display the number `n`.
  * - If `padTo` is greater than 0, a filled rectangle is drawn as a background for the text.
@@ -201,12 +200,19 @@ void setupOLed()
 void OLedPSIError()
 {
 
-    //display.clearDisplay();
+    // display.clearDisplay();
     display.setTextSize(2);
-    display.setTextColor(SH110X_WHITE,SH110X_BLACK);
+    display.setTextColor(SH110X_WHITE, SH110X_BLACK);
     display.setCursor(0, 0);
     display.println(F("PSI Error"));
     display.setTextSize(1);
     display.println(F("Sensor disconnected"));
     display.display();
+}
+
+void printPSIError(word sensorValue)
+{
+    Serial.print(F("sensorValue is less than 1/4 of it's minimum value: "));
+    Serial.println(sensorValue);
+    Serial.println(F("Likely disconnected sensor or bad connection"));
 }

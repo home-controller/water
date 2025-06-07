@@ -15,8 +15,8 @@
  * @note The value is set to 35 PSI by default.
  * @note this variable is defined in contr.h
  */
-extern byte maxPSI = 35;
-extern byte minPSI = 20;
+extern byte maxPSI;// = 35
+extern byte minPSI;// = 20
 #define sensorMaxPSI 80 /// this needs to be set to the maximum pressure of the sensor
 
 // For the presser sensor I am using Input 5V Output 0.5-4.5V / 0-5V(0-100PSI)
@@ -39,7 +39,8 @@ constexpr word maxValue = static_cast<word>(resPerVolt * 4.5); // 205 x 4.5 = 92
  * to the pump turning on and off repeatedly, potentially causing it
  * to burn out. The default value is set to 30 seconds (30,000 milliseconds).
  */
-constexpr unsigned long minTOnTime = (30UL * 1000);
+constexpr unsigned long minTOnTime = (5UL * 1000);
+//TODO: Change this to 30 seconds when done testing
 
 #define PinPSI A0        // Analog read pin for pump presser in psi.
 #define PinPump1 3       // To relay to turn pump on/off with pressure sensor
@@ -65,21 +66,5 @@ constexpr unsigned long minTOnTime = (30UL * 1000);
 #define LCErrorLostPrime 2
 #define LCErrorExpansionTank 3
 #define LCErrorSensor 4 // The sensor should have a voltage of 0.5 for 0 PSI. So if less the 0.5 volts there is a problem like disconnected sensor etc.
-
-/**
- * @brief External variable representing the minimum PSI (pounds per square inch) value.
- *
- * This variable is used to define the minimum pressure threshold in the system.
- * It is declared as an external variable, meaning it is defined elsewhere in the program.
- */
-extern byte minPSI;
-
-/**
- * @brief Represents the maximum pressure in PSI (pounds per square inch).
- *
- * This variable is declared as an external byte, meaning it is defined elsewhere
- * in the program. It is used to store the maximum allowable pressure value.
- */
-extern byte maxPSI;
 
 #endif

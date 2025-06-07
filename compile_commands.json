@@ -1,0 +1,266 @@
+[
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/FrameworkArduino/CDC.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/CDC.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/CDC.cpp",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/CDC.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/FrameworkArduino/HardwareSerial.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/HardwareSerial.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/HardwareSerial.cpp",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/HardwareSerial.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/FrameworkArduino/HardwareSerial0.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/HardwareSerial0.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/HardwareSerial0.cpp",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/HardwareSerial0.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/FrameworkArduino/HardwareSerial1.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/HardwareSerial1.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/HardwareSerial1.cpp",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/HardwareSerial1.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/FrameworkArduino/HardwareSerial2.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/HardwareSerial2.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/HardwareSerial2.cpp",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/HardwareSerial2.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/FrameworkArduino/HardwareSerial3.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/HardwareSerial3.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/HardwareSerial3.cpp",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/HardwareSerial3.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/FrameworkArduino/IPAddress.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/IPAddress.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/IPAddress.cpp",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/IPAddress.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/FrameworkArduino/PluggableUSB.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/PluggableUSB.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/PluggableUSB.cpp",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/PluggableUSB.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/FrameworkArduino/Print.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/Print.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/Print.cpp",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/Print.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/FrameworkArduino/Stream.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/Stream.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/Stream.cpp",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/Stream.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/FrameworkArduino/Tone.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/Tone.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/Tone.cpp",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/Tone.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/FrameworkArduino/USBCore.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/USBCore.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/USBCore.cpp",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/USBCore.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-gcc -o .pio/build/ATmega328PB/FrameworkArduino/WInterrupts.c.o -c -std=gnu11 -fno-fat-lto-objects -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/WInterrupts.c",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/WInterrupts.c",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/WInterrupts.c.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/FrameworkArduino/WMath.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/WMath.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/WMath.cpp",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/WMath.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/FrameworkArduino/WString.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/WString.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/WString.cpp",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/WString.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/FrameworkArduino/abi.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/abi.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/abi.cpp",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/abi.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-gcc -o .pio/build/ATmega328PB/FrameworkArduino/hooks.c.o -c -std=gnu11 -fno-fat-lto-objects -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/hooks.c",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/hooks.c",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/hooks.c.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/FrameworkArduino/main.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/main.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/main.cpp",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/main.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/FrameworkArduino/new.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/new.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/new.cpp",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/new.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-gcc -o .pio/build/ATmega328PB/FrameworkArduino/wiring.c.o -c -std=gnu11 -fno-fat-lto-objects -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/wiring.c",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/wiring.c",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/wiring.c.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-gcc -o .pio/build/ATmega328PB/FrameworkArduino/wiring_analog.c.o -c -std=gnu11 -fno-fat-lto-objects -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/wiring_analog.c",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/wiring_analog.c",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/wiring_analog.c.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-gcc -o .pio/build/ATmega328PB/FrameworkArduino/wiring_digital.c.o -c -std=gnu11 -fno-fat-lto-objects -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/wiring_digital.c",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/wiring_digital.c",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/wiring_digital.c.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/FrameworkArduino/wiring_extras.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/wiring_extras.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/wiring_extras.cpp",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/wiring_extras.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-gcc -mmcu=atmega328pb -x assembler-with-cpp -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant -c -o .pio/build/ATmega328PB/FrameworkArduino/wiring_pulse.S.o /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/wiring_pulse.S",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/wiring_pulse.S",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/wiring_pulse.S.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-gcc -o .pio/build/ATmega328PB/FrameworkArduino/wiring_pulse.c.o -c -std=gnu11 -fno-fat-lto-objects -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/wiring_pulse.c",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/wiring_pulse.c",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/wiring_pulse.c.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-gcc -o .pio/build/ATmega328PB/FrameworkArduino/wiring_shift.c.o -c -std=gnu11 -fno-fat-lto-objects -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/wiring_shift.c",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore/wiring_shift.c",
+        "output": ".pio/build/ATmega328PB/FrameworkArduino/wiring_shift.c.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/lib4b2/Wire/Wire.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/Wire/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/Wire/src/Wire.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/Wire/src/Wire.cpp",
+        "output": ".pio/build/ATmega328PB/lib4b2/Wire/Wire.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-gcc -o .pio/build/ATmega328PB/lib4b2/Wire/utility/twi.c.o -c -std=gnu11 -fno-fat-lto-objects -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/Wire/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/Wire/src/utility/twi.c",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/Wire/src/utility/twi.c",
+        "output": ".pio/build/ATmega328PB/lib4b2/Wire/utility/twi.c.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/lib8b0/SPI/SPI.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/SPI/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant /home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/SPI/src/SPI.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/SPI/src/SPI.cpp",
+        "output": ".pio/build/ATmega328PB/lib8b0/SPI/SPI.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o \".pio/build/ATmega328PB/lib84d/Adafruit BusIO/Adafruit_BusIO_Register.cpp.o\" -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 \"-I.pio/libdeps/ATmega328PB/Adafruit BusIO\" -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/SPI/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/Wire/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant \".pio/libdeps/ATmega328PB/Adafruit BusIO/Adafruit_BusIO_Register.cpp\"",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": ".pio/libdeps/ATmega328PB/Adafruit BusIO/Adafruit_BusIO_Register.cpp",
+        "output": ".pio/build/ATmega328PB/lib84d/Adafruit BusIO/Adafruit_BusIO_Register.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o \".pio/build/ATmega328PB/lib84d/Adafruit BusIO/Adafruit_GenericDevice.cpp.o\" -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 \"-I.pio/libdeps/ATmega328PB/Adafruit BusIO\" -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/SPI/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/Wire/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant \".pio/libdeps/ATmega328PB/Adafruit BusIO/Adafruit_GenericDevice.cpp\"",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": ".pio/libdeps/ATmega328PB/Adafruit BusIO/Adafruit_GenericDevice.cpp",
+        "output": ".pio/build/ATmega328PB/lib84d/Adafruit BusIO/Adafruit_GenericDevice.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o \".pio/build/ATmega328PB/lib84d/Adafruit BusIO/Adafruit_I2CDevice.cpp.o\" -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 \"-I.pio/libdeps/ATmega328PB/Adafruit BusIO\" -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/SPI/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/Wire/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant \".pio/libdeps/ATmega328PB/Adafruit BusIO/Adafruit_I2CDevice.cpp\"",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": ".pio/libdeps/ATmega328PB/Adafruit BusIO/Adafruit_I2CDevice.cpp",
+        "output": ".pio/build/ATmega328PB/lib84d/Adafruit BusIO/Adafruit_I2CDevice.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o \".pio/build/ATmega328PB/lib84d/Adafruit BusIO/Adafruit_SPIDevice.cpp.o\" -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 \"-I.pio/libdeps/ATmega328PB/Adafruit BusIO\" -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/SPI/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/Wire/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant \".pio/libdeps/ATmega328PB/Adafruit BusIO/Adafruit_SPIDevice.cpp\"",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": ".pio/libdeps/ATmega328PB/Adafruit BusIO/Adafruit_SPIDevice.cpp",
+        "output": ".pio/build/ATmega328PB/lib84d/Adafruit BusIO/Adafruit_SPIDevice.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o \".pio/build/ATmega328PB/libaf4/Adafruit GFX Library/Adafruit_GFX.cpp.o\" -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 \"-I.pio/libdeps/ATmega328PB/Adafruit GFX Library\" \"-I.pio/libdeps/ATmega328PB/Adafruit BusIO\" -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/SPI/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/Wire/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant \".pio/libdeps/ATmega328PB/Adafruit GFX Library/Adafruit_GFX.cpp\"",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": ".pio/libdeps/ATmega328PB/Adafruit GFX Library/Adafruit_GFX.cpp",
+        "output": ".pio/build/ATmega328PB/libaf4/Adafruit GFX Library/Adafruit_GFX.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o \".pio/build/ATmega328PB/libaf4/Adafruit GFX Library/Adafruit_GrayOLED.cpp.o\" -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 \"-I.pio/libdeps/ATmega328PB/Adafruit GFX Library\" \"-I.pio/libdeps/ATmega328PB/Adafruit BusIO\" -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/SPI/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/Wire/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant \".pio/libdeps/ATmega328PB/Adafruit GFX Library/Adafruit_GrayOLED.cpp\"",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": ".pio/libdeps/ATmega328PB/Adafruit GFX Library/Adafruit_GrayOLED.cpp",
+        "output": ".pio/build/ATmega328PB/libaf4/Adafruit GFX Library/Adafruit_GrayOLED.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o \".pio/build/ATmega328PB/libaf4/Adafruit GFX Library/Adafruit_SPITFT.cpp.o\" -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 \"-I.pio/libdeps/ATmega328PB/Adafruit GFX Library\" \"-I.pio/libdeps/ATmega328PB/Adafruit BusIO\" -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/SPI/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/Wire/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant \".pio/libdeps/ATmega328PB/Adafruit GFX Library/Adafruit_SPITFT.cpp\"",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": ".pio/libdeps/ATmega328PB/Adafruit GFX Library/Adafruit_SPITFT.cpp",
+        "output": ".pio/build/ATmega328PB/libaf4/Adafruit GFX Library/Adafruit_SPITFT.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-gcc -o \".pio/build/ATmega328PB/libaf4/Adafruit GFX Library/glcdfont.c.o\" -c -std=gnu11 -fno-fat-lto-objects -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 \"-I.pio/libdeps/ATmega328PB/Adafruit GFX Library\" \"-I.pio/libdeps/ATmega328PB/Adafruit BusIO\" -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/SPI/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/Wire/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant \".pio/libdeps/ATmega328PB/Adafruit GFX Library/glcdfont.c\"",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": ".pio/libdeps/ATmega328PB/Adafruit GFX Library/glcdfont.c",
+        "output": ".pio/build/ATmega328PB/libaf4/Adafruit GFX Library/glcdfont.c.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o \".pio/build/ATmega328PB/lib55e/Adafruit SH110X/Adafruit_SH1106G.cpp.o\" -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 \"-I.pio/libdeps/ATmega328PB/Adafruit SH110X\" \"-I.pio/libdeps/ATmega328PB/Adafruit GFX Library\" \"-I.pio/libdeps/ATmega328PB/Adafruit BusIO\" -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/SPI/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/Wire/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant \".pio/libdeps/ATmega328PB/Adafruit SH110X/Adafruit_SH1106G.cpp\"",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": ".pio/libdeps/ATmega328PB/Adafruit SH110X/Adafruit_SH1106G.cpp",
+        "output": ".pio/build/ATmega328PB/lib55e/Adafruit SH110X/Adafruit_SH1106G.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o \".pio/build/ATmega328PB/lib55e/Adafruit SH110X/Adafruit_SH1107.cpp.o\" -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 \"-I.pio/libdeps/ATmega328PB/Adafruit SH110X\" \"-I.pio/libdeps/ATmega328PB/Adafruit GFX Library\" \"-I.pio/libdeps/ATmega328PB/Adafruit BusIO\" -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/SPI/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/Wire/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant \".pio/libdeps/ATmega328PB/Adafruit SH110X/Adafruit_SH1107.cpp\"",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": ".pio/libdeps/ATmega328PB/Adafruit SH110X/Adafruit_SH1107.cpp",
+        "output": ".pio/build/ATmega328PB/lib55e/Adafruit SH110X/Adafruit_SH1107.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o \".pio/build/ATmega328PB/lib55e/Adafruit SH110X/Adafruit_SH110X.cpp.o\" -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 \"-I.pio/libdeps/ATmega328PB/Adafruit SH110X\" \"-I.pio/libdeps/ATmega328PB/Adafruit GFX Library\" \"-I.pio/libdeps/ATmega328PB/Adafruit BusIO\" -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/SPI/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/Wire/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant \".pio/libdeps/ATmega328PB/Adafruit SH110X/Adafruit_SH110X.cpp\"",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": ".pio/libdeps/ATmega328PB/Adafruit SH110X/Adafruit_SH110X.cpp",
+        "output": ".pio/build/ATmega328PB/lib55e/Adafruit SH110X/Adafruit_SH110X.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/lib471/ArduinoUniqueID/ArduinoUniqueID.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -I.pio/libdeps/ATmega328PB/ArduinoUniqueID/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant .pio/libdeps/ATmega328PB/ArduinoUniqueID/src/ArduinoUniqueID.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": ".pio/libdeps/ATmega328PB/ArduinoUniqueID/src/ArduinoUniqueID.cpp",
+        "output": ".pio/build/ATmega328PB/lib471/ArduinoUniqueID/ArduinoUniqueID.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/src/contr.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Isrc -I.pio/libdeps/ATmega328PB/ArduinoUniqueID/src \"-I.pio/libdeps/ATmega328PB/Adafruit SH110X\" \"-I.pio/libdeps/ATmega328PB/Adafruit GFX Library\" \"-I.pio/libdeps/ATmega328PB/Adafruit BusIO\" -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/SPI/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/Wire/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant src/contr.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "src/contr.cpp",
+        "output": ".pio/build/ATmega328PB/src/contr.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/src/main.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Isrc -I.pio/libdeps/ATmega328PB/ArduinoUniqueID/src \"-I.pio/libdeps/ATmega328PB/Adafruit SH110X\" \"-I.pio/libdeps/ATmega328PB/Adafruit GFX Library\" \"-I.pio/libdeps/ATmega328PB/Adafruit BusIO\" -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/SPI/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/Wire/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant src/main.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "src/main.cpp",
+        "output": ".pio/build/ATmega328PB/src/main.cpp.o"
+    },
+    {
+        "command": "/home/jmnc2/.platformio/packages/toolchain-atmelavr/bin/avr-g++ -o .pio/build/ATmega328PB/src/ui.cpp.o -c -fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++17 -mmcu=atmega328pb -Os -Wall -ffunction-sections -fdata-sections -flto -DPLATFORMIO=60118 -DARDUINO_AVR_ATmega328PB -DVERSION=0.0.2 -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO=10808 -Isrc -I.pio/libdeps/ATmega328PB/ArduinoUniqueID/src \"-I.pio/libdeps/ATmega328PB/Adafruit SH110X\" \"-I.pio/libdeps/ATmega328PB/Adafruit GFX Library\" \"-I.pio/libdeps/ATmega328PB/Adafruit BusIO\" -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/SPI/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/libraries/Wire/src -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/cores/MiniCore -I/home/jmnc2/.platformio/packages/framework-arduino-avr-minicore/variants/pb-variant src/ui.cpp",
+        "directory": "/home/jmnc2/doc/src/Arduino/water",
+        "file": "src/ui.cpp",
+        "output": ".pio/build/ATmega328PB/src/ui.cpp.o"
+    }
+]
