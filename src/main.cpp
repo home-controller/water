@@ -79,6 +79,7 @@ void setup()
     // delay(10000);
     Serial.println(F("leaving setup"));
 }
+
 byte c = 0;
 word loopCount = 0;
 byte lastPSI = 123;
@@ -102,19 +103,35 @@ void loop()
 
     loopCount++;
     unsigned long currentTime = millis(); // Get the current time in milliseconds, 1 second = 1000 milliseconds
-    word sensorValue,tSV;
-    byte sensorPSI = mapVoltToPSI(sensorValue);
+    int16_t sensorValue, tSV;
+    byte sensorPSI;
     tSV = analogRead(PinPSI);
+    if (tSV < minValue) {
+        sensorValue = tSV;
+    } else if (tSV > (sensorValue + 4)) {
+        sensorValue = tSV;
+    } else if ((tSV + 4) < sensorValue) {
+        sensorValue = tSV;
+    }
+    // sensorValue = tSV;
+    sensorPSI = mapVoltToPSI(sensorValue);
 
     // If the PSI Changes update the display
-    if (sensorPSI != lastPSI) {
+    if ((sensorPSI != lastPSI) and (sensorValue > ((minValue) / 4))) {
         lastPSI = sensorPSI;
         oledWriteAt(sensorPSI, 6, 1, 4, 2);
         float bar;
         bar = PSItoBar(sensorPSI);
         oledWriteAt(bar, 6, 3, 4, 1);
+        // Serial.print(F("Pump pressure is: "));
+        // Serial.print(sensorPSI);
+        // Serial.print(F(", sensorValue: "));
+        // Serial.println(sensorValue);
     }
-
+    // Serial.print(F("Line number: "));
+    // Serial.print(__LINE__);
+    // Serial.print(F(" time: "));
+    // Serial.println(millis() - currentTime);
     /// the minimum value for a working a connected sensor should be 0.5V so if it
     /// is less than 1/4 of that we should have a problem. The pin than the sensor
     /// is on should be pulled low to detect such problems as a disconnected
@@ -159,22 +176,20 @@ void loop()
             }
             delay(1000);
         } else {
-
-            // 30 seconds have passed, execute your code here
-            // Serial.printf(F("Debug: At line: " CURRENT_LINE " pumpOn();"));
-            static boolean lastSysPumpState = 0;
-            if (lastSysPumpState != pumpStateOnSys) {
-                lastSysPumpState = pumpStateOnSys;
                 Serial.print(F("System pump state changed to: "));
                 Serial.println(pumpStateOnSys);
                 ledBlink(LCPumpOn);
                 Serial.print(F("Turn on pressure: "));
                 Serial.println(minPSI);
-            }
             t1 = false;
         }
     }
-    if (currentTime - previousTimeLed >= intervalLed) {// 2000 milliseconds = 2 seconds
+    // Serial.print(F("Line number: "));
+    // Serial.print(__LINE__);
+    // Serial.print(F(" time: "));
+    // Serial.println(millis() - currentTime);
+
+    if (currentTime - previousTimeLed >= intervalLed) { // 2000 milliseconds = 2 seconds
         previousTimeLed = currentTime;
         ledBlink();
         if (c >= 5) {
@@ -192,4 +207,9 @@ void loop()
         }
         c++;
     }
+    // Serial.print(F("Line number: "));
+    // Serial.print(__LINE__);
+    // Serial.print(F(" time: "));
+    // Serial.println(millis() - currentTime);
+    delay(500); // wait for 0.5 seconds before the next loop iteration
 }

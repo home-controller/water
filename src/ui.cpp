@@ -27,6 +27,7 @@ Adafruit_SH1106G display = Adafruit_SH1106G(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, 
  */
 void ledBlink(byte state)
 {
+    #ifdef LED_BLINK_DEBUG
     static byte blinkCode = 0;
     byte i;
     if ((state > 0) and (state != blinkCode)) {
@@ -70,6 +71,16 @@ void ledBlink(byte state)
         }
         delay(2000);
     }
+    #else
+    static byte ledState = LOW; // Initialize the LED state to LOW
+    if(ledState == LOW) {
+        ledState = HIGH; // Set the LED state to HIGH
+    } else {
+        ledState = LOW; // Set the LED state to LOW
+    }
+    digitalWrite(LED_BUILTIN, ledState); // Write the LED state to the pin
+    //delay(500); // Wait for 500 milliseconds
+    #endif
 }
 
 /**

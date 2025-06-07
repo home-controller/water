@@ -6,6 +6,28 @@
 byte maxPSI = 35;
 byte minPSI = 20;
 
+/**
+ * @brief Indicates the current state of the system pump.
+ *
+ * This external boolean variable represents whether the system pump is currently on or off.
+ * - true:  The pump is ON.
+ * - false: The pump is OFF.
+ * @note 1: the default of off(false=0)
+ * @note 2: defined in contr.cpp
+ */
+boolean pumpStateOnSys = false;
+
+/**
+ * @brief Indicates the current state of the well pump.
+ *
+ * This external boolean variable represents whether the well pump is currently on or off.
+ * - true:  The pump is ON.
+ * - false: The pump is OFF.
+ * @note 1: the default of off(false=0)
+ * @note 2: defined in contr.cpp
+ */
+boolean pumpStateOnWell = false;
+
 word mapVoltToPSI(word p)
 {
     if (p > maxValue) { p = maxValue; }
@@ -94,7 +116,10 @@ boolean wellPumpOn()
         delay(500);
         return false;
     }
+    // Check if the pump is already on
+    // If the pump is already on, do nothing
     if (pumpStateOnWell != true) {
+        lastTurnedOn = millis(); // Update the last turned on time to now, so we can check the next time if the minimum time has elapsed.
 #if (pumpOnV == HIGH)
         digitalWrite(PinPump2, HIGH);
 #else
@@ -128,7 +153,9 @@ boolean systemPumpOn()
         delay(500);
         return false;
     }
+    // Check if the pump is already on
     if (pumpStateOnSys != true) {
+        lastTurnedOn = millis(); // Update the last turned on time to now, so we can check the next time if the minimum time has elapsed.
 #if (pumpOnV == HIGH)
         digitalWrite(PinPump1, HIGH);
 #else
