@@ -22,15 +22,33 @@ It's advisable to incorporate a mechanism to detect if the pump has lost its pri
 Consider using 1-Wire temperature sensors, amp sensors, and/or water flow sensors to assist with this.
 
 ## Todo: Tank Level Monitoring
-Implement a separate system to monitor the tank level. This will allow you to keep track of the water level and take appropriate action as needed.
+
+### Voltage on IO Pins
+* Float up 0V   (This is where the reed switch in the float is open[^1], so the pulldown resistor on the controller PCB will pull the float pin to 0V)
+* Float down 5V (This is where the reed switch in the float is closed, powering the float pin to 5V)
+* TODO: Might be an idea to add a fuse or resistor to the 5V going to the float
+
+I think it is better this way around as if the tank is full it will be the same as if the wire is disconnected with a bad connection etc.
+
+#### Notes
+[^1]: This can also mean there no float on this pin(maybe using only 1 float) or a connection problem, brocken wire etc.
+
+### More details
+
 * Tank level lines D9 & D10 go through a 22Ω and are also pulled to ground vi. 47k
-* With two floats with break for full & make for not floating, one for the low water level and 1 for the high.
-  * Then if the 1 side of the float is connected to 5V and the other to the Pin the pin will go High when the float is not floating.
-  * This way it is a positive action to pull the pin High when there is not water, so with a connection problem to pump will not flood the well house.
-* Or another way of saying it is if both pins are HIGH(+5V) the tank needs more water.
-* And if the High float is off(i.e. NC, float is floating) turn the pum off as the tank is full
+  * So water at float Pin is pulled too 0V with the 47k resistor
+  * Float down(no water) the float will connect the pin to 5V and override the pulldown resistor.
+* There are 2 floats one for the low water level and 1 for the high.
+
+### Float states
+* If both pins are HIGH(+5V) the tank needs more water.
+* If the top float pin is 0V the tank is full
   * note the bottom float will also be floating = switch is off now, so pulled low on PCB.
-  * If not should maybe halt until someone fixes the float to stop the pump turning on and off fast? Or maybe change mode to working with just the high float
+    * If bottom float is high while the top one is low there is a problem somewhere.
+    * Go to single float mode?
+      * Maybe leave the pump on for a time to fill the tank past the float, maybe 30 seconds
+      * And make sure the pump doesn't turn on again for some time, maybe 40 seconds
+      * Need to check how fast the tank fills and empties for better values.
 
 1. Connect one side of the float switch to +5
 2. Connect the other side to the float pin

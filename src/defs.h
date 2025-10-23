@@ -15,8 +15,8 @@
  * @note The value is set to 35 PSI by default.
  * @note this variable is defined in contr.h
  */
-extern byte maxPSI;// = 35
-extern byte minPSI;// = 20
+extern byte maxPSI;     // = 35
+extern byte minPSI;     // = 20
 #define sensorMaxPSI 80 /// this needs to be set to the maximum pressure of the sensor
 
 // For the presser sensor I am using Input 5V Output 0.5-4.5V / 0-5V(0-100PSI)
@@ -25,8 +25,8 @@ extern byte minPSI;// = 20
 constexpr float resPerVolt(analogReadMaxRes / (float)MCUVolt); // 1024/5 = 204.8
 constexpr byte minValue = static_cast<byte>(resPerVolt * 0.5); // (1024/5) x 0.5 =102 this is the ADC value for 0.5V
 constexpr word maxValue = static_cast<word>(resPerVolt * 4.5); // 205 x 4.5 = 922.5
-#define maxRange (maxValue - minValue)                         // = 820, This could vary a bit.
-#define VoltToPIS maxRange / sensorMaxPSI                      // depends on sensor. For 75psi max VoltToPIS =#include
+#define maxRange (maxValue - minValue)                         // = 820 The ADC range from 0.5V to 4.5V, This could vary a bit.
+#define valuePerPSI (maxRange / sensorMaxPSI)                  // This is how much the value returned by AnalogRead() changes per PSI, for 80 PSI this is 10((byte)10.25)
 #define pumpOnV HIGH
 
 /**
@@ -40,19 +40,27 @@ constexpr word maxValue = static_cast<word>(resPerVolt * 4.5); // 205 x 4.5 = 92
  * to burn out. The default value is set to 30 seconds (30,000 milliseconds).
  */
 constexpr unsigned long minTOnTime = (15UL * 1000);
-//TODO: Change this to 30 seconds when done testing
+// TODO: Change this to 30 seconds when done testing
 
-#define PinPSI A0        // Analog read pin for pump presser in psi.
-#define PinPump1 3       // To relay to turn pump on/off with pressure sensor
-#define PinPump2 4       // To relay to turn pump on/off borehole pump to fill tank. Float controlled
-#define PinFloatTop 9    // Connect to the low float
-#define PinFloatLower 10 // Connect to the high float
-#define WaterAtFloat 0   // The water level at the float switch. When the water is at the float then the switch in the float is off
-#define WaterNotAtFloat                                                                                                                                   \
-    1 // When the water level is lower than the float the switch in the float is on and as the other side is +5V the pin is HIGH
-      // turn on the pump.
-#define PinFlow1                                                                                                                                          \
-    7                 // Connect to flow sensor switch, pump to first tank. This is for checking
+#define PinPSI A0            // Analog read pin for pump presser in psi.
+#define PinPump1 3           // To relay to turn pump on/off with pressure sensor
+#define PinPump2 4           // To relay to turn pump on/off borehole pump to fill tank. Float controlled
+#define PinFloatTop 9        // Connect to the low float
+#define PinFloatLower 10     // Connect to the high float
+#define WaterAtFloat LOW     // Water at float means the float switch is open(no longer connected) and the pin is pulled LOW to 0V, by a 47k resistor on the IO pin.
+#define WaterNotAtFloat HIGH // No water at the float means the switch in the float is on and so connects the IO pin to +5V (HIGH).
+
+/// This is the delay to help make sure the tank is filled before the pump is turned off and not just waves on the water surface.
+/// @note 1: This will be more important if the tank only has one float as the pump could try to turn on and off rapidly for each wave.
+/// @note 2: This delay should be changed to match your tank fill rate.
+#define tankFilledDelay 15000
+
+/// This is the delay to help make sure the tank is empty before the pump is turned on and not just waves on the water surface.
+/// This will be more important if the tank only has one float.
+/// @note This should be changed to match your tank and the amount of time it takes to empty the appropriate amount of water.
+#define tankEmptyDelay 15000
+
+#define PinFlow1 7    // Connect to flow sensor switch, pump to first tank. This is for checking
                       // prime or any other problem with borehole pump.
 #define PinFlow2 8    // As above but for system pressure pump after settlement tanks.
 #define PinTemp 12    // 1Wire Temperature sensor to protect from frost.

@@ -112,8 +112,9 @@ byte oledWriteAt(byte n, byte x_char, byte y_line, byte padTo, byte textSize, by
 
     display.setTextSize(textSize);
     display.setTextColor(SH110X_WHITE, SH110X_BLACK);
-    if ((padTo > 0)) display.setCursor((x_char - 1) * charWidth * textSize, (y_line - 1) * charHight);
-    display.println(n);
+    //if ((padTo > 0)) display.setCursor((x_char - 1) * charWidth * textSize, (y_line - 1) * charHight);
+    display.setCursor((x_char - 1) * charWidth * textSize, (y_line - 1) * charHight);
+    display.print(n);
     display.display();
     return 0;
 }
@@ -194,10 +195,10 @@ void setupOLed()
     display.print(minPSI);
     display.print(" Max:");
     display.println(maxPSI);
-    display.println(F("Tank: bellow low"));
+    display.println(F("Tank: full"));
     display.println(F("Well:flow:000, Pump=0"));
     display.println(F("Sys:Flow:000,Pump=0"));
-    display.println(F("Pump Tank 1, Sys 0"));
+    display.println(F("Floats top:0, lower:0"));
     // display.setTextSize(3);
     // display.setTextColor(SH110X_BLACK, SH110X_WHITE);  // 'inverted' text
     // display.println(3.141592);

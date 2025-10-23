@@ -28,6 +28,96 @@ boolean pumpStateOnSys = false;
  */
 boolean pumpStateOnWell = false;
 
+boolean topFloatIsWater = true;        // Is there water at the float?, true for water at float, false if water is below the float.
+boolean lowerFloatIsWater = true;      // Is there water at the lower float?, true for water at float, false if water is below the float.
+boolean aFloatChanged = true;          // This is true if a float has changed since the last check
+boolean updateTankPump = false;        // This is true if the tank pump needs to be updated i.e. turned on or off
+unsigned long lastFloatChangeTime = 0; // This is the last time a float changed state
+
+void getFloats()
+{
+    boolean tTopFloatIsWater, tLowerFloatIsWater;
+    tTopFloatIsWater = digitalRead(PinFloatTop);
+    tLowerFloatIsWater = digitalRead(PinFloatLower);
+    ///     Float up 0V
+    ///     Float down 5V
+    if (WaterAtFloat == 0) {
+        tTopFloatIsWater = !tTopFloatIsWater;     // If the water is at the float then the switch in the float is off
+        tLowerFloatIsWater = !tLowerFloatIsWater; // If the water is at the float then the switch in the float is off
+    }
+    if (tTopFloatIsWater != topFloatIsWater) {
+        topFloatIsWater = tTopFloatIsWater;
+        aFloatChanged = true; // Set the flag to true if a float has changed
+    }
+    if (tLowerFloatIsWater != lowerFloatIsWater) {
+        lowerFloatIsWater = tLowerFloatIsWater;
+        aFloatChanged = true; // Set the flag to true if a float has changed
+    }
+}
+
+/**
+ * @brief Checks the state of the tank's float switches and manages pump control logic.(More details in @@details below)
+ *
+ * @details
+ * This function reads the current state of the top and lower float switches using getFloats().
+ * If a float state change is detected (aFloatChanged is true), it:
+ *   - Updates the lastFloatChangeTime to the current time.
+ *   - Prints the status of each float to the serial monitor.
+ *   - Updates the OLED display to reflect the float states.
+ *   - Resets the aFloatChanged flag.
+ *   - Sets the updateTankPump flag to trigger pump logic.
+ *
+ * If no float state change is detected but updateTankPump is true, it:
+ *   - Checks if the top float indicates the tank is full and enough time has passed since the last change.
+ *     If so, turns off the well pump and resets updateTankPump.
+ *   - Checks if the lower float indicates the tank is empty and enough time has passed since the last change.
+ *     If so, turns on the well pump.
+ *
+ * This function ensures that pump operations are only triggered after a debounce delay
+ * following a float state change, to avoid rapid toggling.
+ */
+void checkTankFloats()
+{
+    getFloats();
+    if (aFloatChanged) {
+        lastFloatChangeTime = millis(); // set time of float change
+        if (topFloatIsWater == false) {
+            Serial.println(F("Top float is not at water level"));
+            oledWriteAt((byte)0, 12, 8);
+        } else {
+            Serial.println(F("Top float is at water level"));
+            oledWriteAt((byte)1, 12, 8);
+        }
+        if (lowerFloatIsWater == false) {
+            Serial.println(F("Lower float is not at water level"));
+            oledWriteAt((byte)0, 21, 8);
+        } else {
+            Serial.println(F("Lower float is at water level"));
+            oledWriteAt((byte)1, 21, 8);
+        }
+        aFloatChanged = false; // Reset the flag after processing
+        updateTankPump = true; // Set the flag to update the tank pump
+    }
+    // else {
+    if (updateTankPump) {
+        if (topFloatIsWater == true) {
+            if (millis() - lastFloatChangeTime >= tankFilledDelay) { // Check if enough time has passed since the last float change
+                Serial.println(F("Tank is full, turning off well pump"));
+                // If the top float is not at water level, turn on the tank pump
+                wellPumpOff();
+                updateTankPump = false; // Reset the flag after processing
+            }
+        } else if (lowerFloatIsWater == false) {
+            if (millis() - lastFloatChangeTime >= tankEmptyDelay) { // Check if enough time has passed since the last float change
+                // If the lower float is at water level, turn on the tank pump
+                wellPumpOn();
+                updateTankPump = false; // Reset the flag after processing
+            }
+        }
+    }
+    //}
+}
+
 word mapVoltToPSI(word p)
 {
     if (p > maxValue) { p = maxValue; }
@@ -70,7 +160,7 @@ void wellPumpOff()
 #endif
         pumpStateOnWell = false;
         Serial.println(F("Turned well pump off"));
-        oledWriteAt((byte)0, 20, 5);
+        oledWriteAt((byte)0, 21, 6);
     }
 }
 
@@ -127,7 +217,7 @@ boolean wellPumpOn()
 #endif
         pumpStateOnWell = true;
         Serial.println(F("Turned well pump on"));
-        oledWriteAt((byte)1, 20, 5);
+        oledWriteAt((byte)1, 21, 6);
     }
     return true;
 }
@@ -149,7 +239,7 @@ boolean systemPumpOn()
 {
     static unsigned long lastTurnedOn = 0; // Initialize to 0 is the same as millis() at startup. But saves checking if initalized each time the function is called.
     if (millis() - lastTurnedOn < minTOnTime) {
-        Serial.println(F("systemPumpOn: minTOnTime not elapsed"));
+        // Serial.println(F("systemPumpOn: minTOnTime not elapsed"));
         delay(500);
         return false;
     }
@@ -163,7 +253,7 @@ boolean systemPumpOn()
 #endif
         pumpStateOnSys = true;
         Serial.println(F("Turned sys pump on"));
-        oledWriteAt((byte)1, 19, 6);
+        oledWriteAt((byte)1, 19, 7);
     }
     return true;
 }
@@ -194,7 +284,7 @@ void systemPumpOff()
 #endif
         pumpStateOnSys = false;
         Serial.println(F("Turned sys pump off"));
-        oledWriteAt((byte)0, 19, 6);
+        oledWriteAt((byte)0, 19, 7);
     }
 }
 

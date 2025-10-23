@@ -108,9 +108,9 @@ void loop()
     tSV = analogRead(PinPSI);
     if (tSV < minValue) {
         sensorValue = tSV;
-    } else if (tSV > (sensorValue + 4)) {
+    } else if (tSV > (sensorValue + (valuePerPSI/2))) {
         sensorValue = tSV;
-    } else if ((tSV + 4) < sensorValue) {
+    } else if ((tSV + (valuePerPSI/2)) < sensorValue) {
         sensorValue = tSV;
     }
     // sensorValue = tSV;
@@ -176,11 +176,11 @@ void loop()
             }
             delay(1000);
         } else {
-                Serial.print(F("System pump state changed to: "));
-                Serial.println(pumpStateOnSys);
-                ledBlink(LCPumpOn);
-                Serial.print(F("Turn on pressure: "));
-                Serial.println(minPSI);
+            Serial.print(F("System pump state changed to: "));
+            Serial.println(pumpStateOnSys);
+            ledBlink(LCPumpOn);
+            Serial.print(F("Turn on pressure: "));
+            Serial.println(minPSI);
             t1 = false;
         }
     }
@@ -195,8 +195,21 @@ void loop()
         if (c >= 5) {
             Serial.print(F("Pump pressure is: "));
             Serial.print(sensorPSI);
-            Serial.print(F(", Loop count "));
-            Serial.println(loopCount);
+            Serial.print(F(", Top float: "));
+            if (topFloatIsWater) {
+                Serial.print(F("water"));
+            } else {
+                Serial.print(F("no water"));
+            }
+            Serial.print(F(", bottom float: "));
+            if (lowerFloatIsWater) {
+                Serial.print(F("water, "));
+            } else {
+                Serial.print(F("no water, "));
+            }
+            Serial.println();
+            // Serial.print(F(", Loop count "));
+            // Serial.println(loopCount);
             // sensorPSI = 18;
             oledWriteAt(sensorPSI, 6, 1, 3, 2);
             float bar;
@@ -207,6 +220,7 @@ void loop()
         }
         c++;
     }
+    checkTankFloats();
     // Serial.print(F("Line number: "));
     // Serial.print(__LINE__);
     // Serial.print(F(" time: "));
